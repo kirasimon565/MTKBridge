@@ -35,11 +35,7 @@ class MainActivity : AppCompatActivity() {
         try {
             log("Attempting to start UsbBridgeService...")
             val serviceIntent = Intent(this, UsbBridgeService::class.java)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(serviceIntent)
-            } else {
-                startService(serviceIntent)
-            }
+            startService(serviceIntent)
             statusText.text = "Server Status: Started"
             log("Service started successfully.")
         } catch (e: Exception) {
